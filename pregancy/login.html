@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log In - Pregnancy Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="login" class="login-page-body antialiased">
+
+  <header class="auth-topbar">
+    <a href="index.html" class="auth-brand">
+      <span class="auth-brand-badge">PW</span>
+      <div>
+        <span class="auth-brand-title">Pregnancy Wiki</span>
+        <span class="auth-brand-sub">Maternal Health Portal</span>
+      </div>
+    </a>
+   
+  </header>
+
+  <main class="auth-main">
+    <div class="auth-card">
+      <div class="auth-header">
+        <span class="auth-kicker">Account Access</span>
+        <h1 class="auth-title">Log In</h1>
+        <p class="auth-subtitle">Choose whether you are logging in as a User or an Admin.</p>
+      </div>
+
+      <div id="auth-alert" class="hidden auth-alert"></div>
+
+      <form id="login-form" class="auth-form">
+        <!-- Two-Way Role Selector: User vs Admin -->
+        <div class="auth-field">
+          <span class="auth-label">Account Role</span>
+          <div class="role-grid">
+            <label class="role-option-card">
+              <input type="radio" name="login-role" value="user" checked class="role-radio-input" />
+              <span>🤰 User</span>
+            </label>
+            <label class="role-option-card">
+              <input type="radio" name="login-role" value="admin" class="role-radio-input" />
+              <span>🛡️ Admin</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="auth-field">
+          <label for="login-username" class="auth-label">Username</label>
+          <input type="text" id="login-username" required placeholder="e.g. mom_jane or admin" class="auth-input" />
+        </div>
+
+        <div id="login-phone-wrapper" class="auth-field">
+          <label for="login-phone" class="auth-label">Phone Number</label>
+          <input type="tel" id="login-phone" required placeholder="e.g. 09170001111" class="auth-input" />
+        </div>
+
+        <div class="auth-field">
+          <div class="auth-label-row">
+            <label for="login-password" class="auth-label">Password</label>
+            <a href="reset-password.html" id="forgot-password-link" class="auth-link-sm">Forgot Password?</a>
+          </div>
+          <input type="password" id="login-password" required placeholder="Enter your password" class="auth-input" />
+        </div>
+
+        <button type="submit" id="login-submit-btn" class="auth-submit-btn">Log In as User</button>
+      </form>
+
+      <div class="auth-footer-row">
+        <span>Don't have an account?</span>
+        <a href="register.html" class="auth-link-bold">Create Account &rarr;</a>
+      </div>
+
+      <p class="auth-demo-note">
+        User demo: <strong>mom_jane</strong> / <strong>09170001111</strong> / <strong>123456</strong><br />
+        Admin demo: <strong>admin</strong> / <strong>admin123</strong>
+      </p>
+    </div>
+  </main>
+
+  <footer class="auth-page-footer">Pregnancy Wiki &bull; Maternal Health Community</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

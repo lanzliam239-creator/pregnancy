@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Pregnancy - Pregnancy Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="about-pregnancy" class="bg-rose-50/40 text-slate-800 antialiased">
+
+  <header class="md:hidden sticky top-0 z-30 flex items-center justify-between bg-white border-b border-rose-100 px-4 py-3 shadow-sm">
+    <a href="index.html" class="flex items-center gap-2 font-bold text-rose-600 text-lg">
+      <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-rose-500 text-white">PW</span>
+      Pregnancy Wiki
+    </a>
+    <button id="mobile-menu-btn" type="button" class="rounded-lg p-2 text-slate-600 hover:bg-rose-50">
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </header>
+
+  <div class="flex min-h-screen">
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 -translate-x-full md:translate-x-0 md:static bg-white border-r border-rose-100 flex flex-col justify-between transition-transform duration-200">
+      <div>
+        <div class="p-6 border-b border-rose-100">
+          <a href="index.html" class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-rose-500 text-white font-bold text-lg shadow-sm">PW</span>
+            <div>
+              <h1 class="font-bold text-slate-900 leading-tight">Pregnancy Wiki</h1>
+              <p class="text-xs text-slate-500">Maternal Health Guide</p>
+            </div>
+          </a>
+        </div>
+        <nav class="p-4 space-y-1.5">
+          <a href="index.html" data-nav="home" class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition"><span>🏠</span> Wiki Home</a>
+          <a href="news-feed.html" data-nav="news-feed" class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition"><span>📰</span> News Feed</a>
+          <a href="messages.html" data-nav="messages" class="nav-link flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition">
+            <span class="flex items-center gap-3"><span>💬</span> Messages</span>
+            <span class="rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">Nurse Online</span>
+          </a>
+        </nav>
+      </div>
+      <div class="p-4 border-t border-rose-100 space-y-3">
+        <button id="open-health-centers-btn" type="button" class="w-full flex items-center justify-center gap-2 rounded-xl bg-rose-600 px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-rose-700 transition">
+          <span>🏥</span> Local Health Centers
+        </button>
+      </div>
+    </aside>
+
+    <main class="flex-1 p-6 md:p-10 max-w-4xl mx-auto w-full">
+      <a href="index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-rose-600 hover:text-rose-700 mb-6">&larr; Back to All Topics</a>
+
+      <!-- Article Section -->
+      <article class="rounded-2xl bg-white border border-rose-100 p-6 md:p-8 shadow-sm mb-8">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-12 w-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-2xl">🤰</span>
+          <div>
+            <span class="text-xs font-semibold uppercase tracking-wider text-rose-500">Core Wiki Module</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900">About Pregnancy</h2>
+          </div>
+        </div>
+
+        <p class="text-slate-600 leading-relaxed mb-6">Pregnancy typically lasts about 40 weeks from the first day of your last menstrual period and is divided into three trimesters. Understanding how your body changes helps you stay healthy and prepared.</p>
+
+        <div class="space-y-4">
+          <div class="rounded-xl bg-rose-50/70 p-4 border border-rose-100">
+            <h3 class="font-bold text-slate-900 mb-1">First Trimester (Weeks 1–12)</h3>
+            <p class="text-sm text-slate-600">Major organs begin forming. Common symptoms include fatigue, nausea (morning sickness), and breast tenderness. Begin taking <strong>400 mcg of folic acid</strong> daily.</p>
+          </div>
+          <div class="rounded-xl bg-rose-50/70 p-4 border border-rose-100">
+            <h3 class="font-bold text-slate-900 mb-1">Second Trimester (Weeks 13–26)</h3>
+            <p class="text-sm text-slate-600">Often called the most comfortable stage. Energy usually returns, your baby bump becomes visible, and you may feel your baby's first movements around weeks 18–20.</p>
+          </div>
+          <div class="rounded-xl bg-rose-50/70 p-4 border border-rose-100">
+            <h3 class="font-bold text-slate-900 mb-1">Third Trimester (Weeks 27–40)</h3>
+            <p class="text-sm text-slate-600">Rapid fetal weight gain and lung maturation occur. Schedule bi-weekly then weekly prenatal visits, and watch for warning signs like severe headaches, blurred vision, or decreased fetal movement.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Bottom Comment Section -->
+      <section class="rounded-2xl bg-white border border-rose-100 p-6 md:p-8 shadow-sm">
+        <h3 class="text-lg font-bold text-slate-900 mb-4">Community Comments (<span id="comment-count">0</span>)</h3>
+
+        <form id="comment-form" data-topic="about-pregnancy" class="mb-6 space-y-3">
+          <input type="text" id="comment-author" placeholder="Your Name (or leave blank for Anonymous Mom)" class="w-full rounded-xl border-slate-200 text-sm focus:border-rose-500 focus:ring-rose-500" />
+          <textarea id="comment-text" rows="3" required placeholder="Share your experience, tip, or question about pregnancy..." class="w-full rounded-xl border-slate-200 text-sm focus:border-rose-500 focus:ring-rose-500"></textarea>
+          <button type="submit" class="rounded-xl bg-rose-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-rose-700 transition">Post Comment</button>
+        </form>
+
+        <div id="comments-list" class="space-y-4"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="health-centers-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-xs"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html> 

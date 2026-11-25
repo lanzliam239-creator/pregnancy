@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile - Pregnancy Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="profile" class="bg-rose-50/40 text-slate-800 antialiased">
+
+  <!-- Mobile Top Header -->
+  <header class="md:hidden sticky top-0 z-30 flex items-center justify-between bg-white border-b border-rose-100 px-4 py-3 shadow-sm">
+    <a href="index.html" class="flex items-center gap-2 font-bold text-rose-600 text-lg">
+      <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-rose-500 text-white">PW</span>
+      Pregnancy Wiki
+    </a>
+    <button id="mobile-menu-btn" type="button" class="rounded-lg p-2 text-slate-600 hover:bg-rose-50">
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </header>
+
+  <div class="flex min-h-screen">
+    <!-- Shared Sidebar -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 -translate-x-full md:translate-x-0 md:static bg-white border-r border-rose-100 flex flex-col justify-between transition-transform duration-200">
+      <div>
+        <div class="p-6 border-b border-rose-100">
+          <a href="index.html" class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-rose-500 text-white font-bold text-lg shadow-sm">PW</span>
+            <div>
+              <h1 class="font-bold text-slate-900 leading-tight">Pregnancy Wiki</h1>
+              <p class="text-xs text-slate-500">Maternal Health Guide</p>
+            </div>
+          </a>
+        </div>
+
+        <nav class="p-4 space-y-1.5">
+          <a href="index.html" data-nav="home" class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition">
+            <span>🏠</span> Wiki Home
+          </a>
+          <a href="news-feed.html" data-nav="news-feed" class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition">
+            <span>📰</span> News Feed
+          </a>
+          <a href="messages.html" data-nav="messages" class="nav-link flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition">
+            <span class="flex items-center gap-3"><span>💬</span> Messages</span>
+            <span class="rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">Nurse Online</span>
+          </a>
+          <a href="profile.html" data-nav="profile" class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition">
+            <span>👤</span> Profile
+          </a>
+        </nav>
+      </div>
+
+      <div class="p-4 border-t border-rose-100 space-y-3">
+        <div id="sidebar-auth-box"></div>
+        <button id="open-health-centers-btn" type="button" class="w-full flex items-center justify-center gap-2 rounded-xl bg-rose-600 px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-rose-700 transition">
+          <span>🏥</span> Local Health Centers
+        </button>
+        <p class="text-[11px] text-center text-slate-400">Educational guide only. Consult a licensed health worker.</p>
+      </div>
+    </aside>
+
+    <!-- Main Profile Content -->
+    <main class="flex-1 p-6 md:p-10 max-w-4xl mx-auto w-full space-y-8">
+      <!-- Profile Summary Card -->
+      <section class="profile-card">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-rose-100">
+          <div class="flex items-center gap-4">
+            <div id="profile-avatar-display" class="profile-avatar-box">PW</div>
+            <div>
+              <div class="flex flex-wrap items-center gap-2">
+                <h2 id="display-fullname" class="text-2xl font-bold text-slate-900">Not set yet</h2>
+                <span id="display-pregnant-badge" class="profile-badge profile-badge-neutral">Pregnancy status not checked</span>
+              </div>
+              <p id="display-sex" class="text-sm text-slate-500 mt-1">Sex: Not specified</p>
+            </div>
+          </div>
+          <button id="toggle-edit-profile-btn" type="button" class="self-start sm:self-center rounded-xl bg-rose-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-rose-700 transition">
+            Edit My Profile
+          </button>
+        </div>
+
+        <dl class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 text-sm">
+          <div class="rounded-xl bg-rose-50/50 border border-rose-100 p-4">
+            <dt class="text-xs font-semibold uppercase tracking-wide text-slate-400">Full Name (Optional)</dt>
+            <dd id="summary-fullname" class="mt-1 font-semibold text-slate-800">—</dd>
+          </div>
+          <div class="rounded-xl bg-rose-50/50 border border-rose-100 p-4">
+            <dt class="text-xs font-semibold uppercase tracking-wide text-slate-400">Age (Optional)</dt>
+            <dd id="summary-age" class="mt-1 font-semibold text-slate-800">—</dd>
+          </div>
+          <div class="rounded-xl bg-rose-50/50 border border-rose-100 p-4">
+            <dt class="text-xs font-semibold uppercase tracking-wide text-slate-400">Address (Optional)</dt>
+            <dd id="summary-address" class="mt-1 font-semibold text-slate-800">—</dd>
+          </div>
+          <div class="rounded-xl bg-rose-50/50 border border-rose-100 p-4">
+            <dt class="text-xs font-semibold uppercase tracking-wide text-slate-400">Phone Number (Optional)</dt>
+            <dd id="summary-phone" class="mt-1 font-semibold text-slate-800">—</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- Edit My Profile Section -->
+      <section id="edit-profile-section" class="profile-card">
+        <div class="mb-5">
+          <span class="text-xs font-semibold uppercase tracking-wider text-rose-500">Account Details</span>
+          <h3 class="text-xl font-bold text-slate-900 mt-0.5">Edit My Profile</h3>
+          <p class="text-xs text-slate-500 mt-1">Full name, age, address, and phone number are optional. Update your picture and health details anytime.</p>
+        </div>
+
+        <div id="profile-alert" class="hidden mb-5 rounded-xl p-3.5 text-xs font-medium"></div>
+
+        <form id="profile-form" class="space-y-5">
+          <!-- Profile Picture Upload + Quick Avatar Options -->
+          <div class="rounded-xl bg-slate-50 border border-slate-200 p-4 space-y-3">
+            <label class="block text-xs font-semibold text-slate-700">Profile Picture (Optional)</label>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+              <div id="edit-avatar-preview" class="profile-avatar-box shrink-0">PW</div>
+              <div class="flex-1 space-y-2">
+                <input type="file" id="profile-photo-input" accept="image/*" class="block w-full text-xs text-slate-600 file:mr-3 file:rounded-lg file:border-0 file:bg-rose-100 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-rose-700 hover:file:bg-rose-200" />
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="text-[11px] text-slate-500">Or pick an icon:</span>
+                  <button type="button" data-preset-avatar="🤰" class="preset-avatar-btn">🤰</button>
+                  <button type="button" data-preset-avatar="👶" class="preset-avatar-btn">👶</button>
+                  <button type="button" data-preset-avatar="🌸" class="preset-avatar-btn">🌸</button>
+                  <button type="button" id="remove-photo-btn" class="text-xs font-semibold text-rose-600 hover:underline ml-1">Clear Photo</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Optional Personal Info Fields -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="profile-fullname" class="block text-xs font-semibold text-slate-700 mb-1">Full Name <span class="text-slate-400 font-normal">(Optional)</span></label>
+              <input type="text" id="profile-fullname" placeholder="e.g. Marielle Jane M. Quiñones" class="w-full rounded-xl border-slate-200 text-sm focus:border-rose-500 focus:ring-rose-500" />
+            </div>
+
+            <div>
+              <label for="profile-age" class="block text-xs font-semibold text-slate-700 mb-1">Age <span class="text-slate-400 font-normal">(Optional)</span></label>
+              <input type="number" id="profile-age" min="10" max="100" placeholder="e.g. 17" class="w-full rounded-xl border-slate-200 text-sm focus:border-rose-500 focus:ring-rose-500" />
+            </div>
+
+            <div>
+              <label for="profile-address" class="block text-xs font-semibold text-slate-700 mb-1">Address <span class="text-slate-400 font-normal">(Optional)</span></label>
+              <input type="text" id="profile-address" placeholder="e.g. Brgy. Barahan, Santa Cruz, Occidental Mindoro" class="w-full rounded-xl border-slate-200 text-sm focus:border-rose-500 focus:ring-rose-500" />
+            </div>
+
+            <div>
+              <label for="profile-phone" class="block text-xs font-semibold text-slate-700 mb-1">Phone Number <span class="text-slate-400 font-normal">(Optional)</span></label>
+              <input type="tel" id="profile-phone" placeholder="e.g. 09171234567" class="w-full rounded-xl border-slate-200 text-sm focus:border-rose-500 focus:ring-rose-500" />
+            </div>
+          </div>
+
+          <!-- Male or Female Selection -->
+          <div>
+            <span class="block text-xs font-semibold text-slate-700 mb-2">Sex</span>
+            <div class="flex flex-wrap gap-4">
+              <label class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2.5 text-sm cursor-pointer hover:bg-rose-50/50">
+                <input type="radio" name="profile-sex" value="Female" class="text-rose-600 focus:ring-rose-500" />
+                <span>Female</span>
+              </label>
+              <label class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2.5 text-sm cursor-pointer hover:bg-rose-50/50">
+                <input type="radio" name="profile-sex" value="Male" class="text-rose-600 focus:ring-rose-500" />
+                <span>Male</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Are You Pregnant Checkbox -->
+          <div class="rounded-xl bg-rose-50/70 border border-rose-200 p-4">
+            <label for="profile-pregnant" class="inline-flex items-center gap-3 cursor-pointer select-none">
+              <input type="checkbox" id="profile-pregnant" class="h-5 w-5 rounded border-rose-300 text-rose-600 focus:ring-rose-500" />
+              <span class="text-sm font-bold text-slate-900">Are you pregnant?</span>
+            </label>
+            <p class="text-xs text-slate-500 mt-1 pl-8">Check this box if you are currently pregnant so we can tailor your care reminders.</p>
+          </div>
+
+          <div class="flex items-center justify-end gap-3 pt-2">
+            <button type="submit" class="rounded-xl bg-rose-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-rose-700 transition">
+              Save Profile Changes
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <!-- Local Health Centers Modal -->
+  <div id="health-centers-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
